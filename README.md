@@ -27,23 +27,36 @@ Server starts at 👉 http://localhost:5000
 
 ## 🧍Auth Routes
 Method	Endpoint	Description
+
 POST	/api/auth/signup	Register new user
+
 POST	/api/auth/login	Login user
+
 POST	/api/auth/refresh	Refresh access token
+
 POST	/api/auth/logout	Logout user
 
 ## Header Required
+
 Authorization: Bearer <accessToken>
 
 ## 🗒️Notes Routes
 Method	Endpoint	Description
+
 GET	/api/notes	Get all notes (supports search, tags, archived, pagination)
+
 GET	/api/notes/:id	Get single note
+
 POST	/api/notes	Create a new note
+
 PUT	/api/notes/:id	Update a note
+
 DELETE	/api/notes/:id	Delete a note
+
 PATCH	/api/notes/:id/pin	Toggle pinned
+
 PATCH	/api/notes/:id/archive	Toggle archived
+
 GET	/api/notes/stats	Get user’s note statistics
 
 
@@ -63,15 +76,25 @@ Authorization: Bearer {{accessToken}}
 
 🧰 Tools & Dependencies
 Package       	          Purpose
+
 express	                  Web framework
+
 mongoose                  MongoDB ODM
+
 bcrypt	                  Password hashing
+
 jsonwebtoken	            JWT auth
+
 dotenv	                  Environment variables
+
 express-validator       	Request validation
+
 helmet	                  Security headers
+
 cors	                    Cross-origin support
+
 morgan	                  Request logging
+
 express-rate-limit       	Rate limiting
 
 
