@@ -20,7 +20,7 @@ export async function signup(req, res) {
     const accessToken = signAccessToken({ userId: user._id });
     const refreshToken = signRefreshToken({ userId: user._id });
 
-    // store refresh token (optional) — keep an array on user
+    // store refresh token (optional)  keep an array on user
     user.refreshTokens = user.refreshTokens || [];
     user.refreshTokens.push(refreshToken);
     await user.save();
@@ -87,12 +87,12 @@ export async function refreshTokenHandler(req, res) {
       return res.status(401).json({ message: "Refresh token not recognized" });
     }
 
-    // all good -> sign new access token (and optionally new refresh token)
+    // all good  sign new access token and optionally new refresh token
     const newAccessToken = signAccessToken({ userId: user._id });
-    // (optionally rotate refresh tokens:)
+    // optionally rotate refresh tokens
     const newRefreshToken = signRefreshToken({ userId: user._id });
 
-    // replace old refresh token with new one (rotate)
+    // replace old refresh token with new one rotate
     user.refreshTokens = user.refreshTokens.filter(t => t !== refreshToken);
     user.refreshTokens.push(newRefreshToken);
     await user.save();
@@ -109,13 +109,13 @@ export async function logout(req, res) {
     const { refreshToken } = req.body;
     if (!refreshToken) return res.status(400).json({ message: "Missing refresh token" });
 
-    // remove refresh token from user's stored tokens
-    // we expect refresh token contains userId if valid; safe to attempt decode
+    // remove refresh token from users stored tokens
+    // we expect refresh token contains userId if valid safe to attempt decode
     let payload;
     try {
       payload = verifyRefreshToken(refreshToken);
     } catch (err) {
-      // token invalid or expired — still try to respond success to avoid info leak
+      // token invalid or expired  still try to respond success to avoid info leak
       return res.status(200).json({ message: "Logged out" });
     }
 
