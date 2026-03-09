@@ -8,7 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/authRoutes.js";
-import noteRoutes from "./routes/noteRoutes.js"
+import noteRoutes from "./routes/noteRoutes.js";
 
 dotenv.config();
 
@@ -33,17 +33,16 @@ app.use("/api/notes", noteRoutes);
 
 // Base route
 app.get("/", (req, res) => {
-  res.send("Notes App API is running 🚀");
+  res.send("Notes App API is running🚀");
 });
 
 // Database connect
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("✅ MongoDB Connected");
+    console.log("✅MongoDB Connected");
     app.listen(process.env.PORT, () =>
       console.log(`🚀 Server running on port ${process.env.PORT}`)
     );
   })
-  .catch((err) => console.error("❌ MongoDB Error:", err));
-
+  .catch((err) => console.error("❌MongoDB Error:", err));

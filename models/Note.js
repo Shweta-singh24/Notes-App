@@ -29,7 +29,7 @@ const noteSchema = new mongoose.Schema(
     },
     isPinned: {
       type: Boolean,
-      default: false,
+      default: false, // pin update
     },
   },
   {

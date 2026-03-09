@@ -1,6 +1,7 @@
 //controllers/notesController.js
 import Note from "../models/Note.js";
 
+//create note
 export async function createNote(req, res) {
   try {
     const { title, content, tags } = req.body;
@@ -20,6 +21,7 @@ export async function createNote(req, res) {
   }
 }
 
+//get notes
 export async function getNotes(req, res) {
   try {
     const userId = req.user._id;
